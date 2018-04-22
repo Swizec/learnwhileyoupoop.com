@@ -4,10 +4,14 @@
   "version": "1.0.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "bootstrap": "3",
     "gatsby": "^1.9.247",
     "gatsby-link": "^1.6.40",
     "gatsby-plugin-react-helmet": "^2.0.10",
-    "react-helmet": "^5.2.0"
+    "react-bootstrap": "^0.32.1",
+    "react-google-analytics": "^0.2.0",
+    "react-helmet": "^5.2.0",
+    "react-share": "^2.1.1"
   },
   "keywords": [
     "gatsby"

@@ -1,12 +1,26 @@
 import React from 'react'
 import Link from 'gatsby-link'
 
+import { Col as Column } from 'react-bootstrap'
+import Section, {
+  LowSection,
+  DarkSection,
+  SectionTitle,
+  GreenSection,
+} from '../components/Section'
+
+import * as Content from '../Content'
+
 const IndexPage = () => (
   <div>
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
+    <div className="bg-white-dark padding-small-top" />
+    {/* <LowSection>
+      <Content.Header />
+      <Column md={10} mdOffset={1}>
+        <Testimonial which="paulo" />
+      </Column>
+    </LowSection> */}
+    <Content.Footer />
   </div>
 )
 
