@@ -11,7 +11,8 @@
     "react-bootstrap": "^0.32.1",
     "react-google-analytics": "^0.2.0",
     "react-helmet": "^5.2.0",
-    "react-share": "^2.1.1"
+    "react-share": "^2.1.1",
+    "react-twitter-widgets": "^1.7.1"
   },
   "keywords": [
     "gatsby"

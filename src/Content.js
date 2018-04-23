@@ -1,4 +1,5 @@
 import React from 'react'
+import { Tweet } from 'react-twitter-widgets'
 import { Row, Col as Column, Image } from 'react-bootstrap'
 // import InstagramEmbed from "react-instagram-embed";
 // import Countdown from "react-countdown-now";
@@ -9,7 +10,12 @@ import {
   FacebookIcon,
 } from 'react-share'
 
-import Section, { GreenSection, LowSection } from './components/Section'
+import Section, {
+  GreenSection,
+  FluffySection,
+  LowSection,
+  SectionTitle,
+} from './components/Section'
 import { MiddleColumn } from './components/Columns'
 import Testimonial from './components/Testimonials'
 
@@ -18,21 +24,42 @@ import Signature from './img/signature.gif'
 export const Header = () => (
   <header className="text-left container">
     <Row>
-      <Column md={10} mdOffset={2}>
-        <h1>Swiz is turning 30 so everything is $30</h1>
+      <Column md={11} mdOffset={1}>
+        <h1>Learn React While You Poop</h1>
         <p className="lead">
-          Get everything Swiz has ever made. Learn React, Redux, MobX, D3v4,
-          ES6+ and more
+          No pressure learning at 2 minutes per day. Start with the basics,
+          become a React 16.3 master in 30 days
         </p>
       </Column>
     </Row>
   </header>
 )
 
+export const Intro = () => (
+  <FluffySection>
+    <MiddleColumn>
+      <Tweet tweetId="981932124231024640" />
+      Write copy describing how this works and what's up.
+    </MiddleColumn>
+  </FluffySection>
+)
+
+export const Curriculum = () => (
+  <LowSection>
+    <SectionTitle>Curriculum Roadmap</SectionTitle>
+    List current and future videos. Each is a link that expands with video.
+    Additional links for transcript and exercises show up. Find way to not have
+    to manually republish all the time.
+  </LowSection>
+)
+
 export const Footer = () => (
   <LowSection>
     <MiddleColumn>
-      <p>Know someone who needs help? Share 👇</p>
+      <p>
+        Know someone who wants to learn React and the associated ecosystem?
+        Share 👇
+      </p>
       <div
         style={{
           display: 'flex',

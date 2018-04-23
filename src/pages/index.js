@@ -14,12 +14,10 @@ import * as Content from '../Content'
 const IndexPage = () => (
   <div>
     <div className="bg-white-dark padding-small-top" />
-    {/* <LowSection>
-      <Content.Header />
-      <Column md={10} mdOffset={1}>
-        <Testimonial which="paulo" />
-      </Column>
-    </LowSection> */}
+    <Content.Header />
+    <Content.Intro />
+    <Content.Curriculum />
+    {/* <Content.Curriculum /> */}
     <Content.Footer />
   </div>
 )
