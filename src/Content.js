@@ -18,6 +18,7 @@ import Section, {
 } from './components/Section'
 import { MiddleColumn } from './components/Columns'
 import Testimonial from './components/Testimonials'
+import CurriculumEntry from './components/CurriculumEntry'
 
 import Signature from './img/signature.gif'
 
@@ -48,7 +49,9 @@ export const Curriculum = ({ videos }) => (
   <LowSection>
     <SectionTitle>Curriculum Roadmap</SectionTitle>
     <Row>
-      <MiddleColumn>{videos.map(video => <h3>{video.title}</h3>)}</MiddleColumn>
+      <MiddleColumn>
+        {videos.map(video => <CurriculumEntry video={video} key={video.id} />)}
+      </MiddleColumn>
     </Row>
     List current and future videos. Each is a link that expands with video.
     Additional links for transcript and exercises show up. Find way to not have
