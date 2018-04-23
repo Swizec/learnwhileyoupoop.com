@@ -44,9 +44,12 @@ export const Intro = () => (
   </FluffySection>
 )
 
-export const Curriculum = () => (
+export const Curriculum = ({ videos }) => (
   <LowSection>
     <SectionTitle>Curriculum Roadmap</SectionTitle>
+    <Row>
+      <MiddleColumn>{videos.map(video => <h3>{video.title}</h3>)}</MiddleColumn>
+    </Row>
     List current and future videos. Each is a link that expands with video.
     Additional links for transcript and exercises show up. Find way to not have
     to manually republish all the time.

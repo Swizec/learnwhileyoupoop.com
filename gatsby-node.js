@@ -31,7 +31,7 @@ exports.sourceNodes = async ({
     children: ['ytPlaylists'],
     parent: null,
     internal: {
-      type: 'allYoutube',
+      type: 'youtube',
     },
   }
 
@@ -40,7 +40,7 @@ exports.sourceNodes = async ({
     parent: 'youtube',
     children: ['lwypPlaylist'],
     internal: {
-      type: 'allYtPlaylists',
+      type: 'ytPlaylists',
     },
   }
 
