@@ -29,7 +29,7 @@ export const Header = () => (
         <h1>Learn React While You Poop</h1>
         <p className="lead">
           No pressure learning at 2 minutes per day. Start with the basics,
-          become a React 16.3 master in 30 days
+          become a React 16.3 master in 30 days or sooner
         </p>
       </Column>
     </Row>

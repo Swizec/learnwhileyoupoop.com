@@ -12,7 +12,6 @@ import Section, {
 import * as Content from '../Content'
 
 const IndexPage = ({ data }) => {
-  console.log(data)
   return (
     <div>
       <div className="bg-white-dark padding-small-top" />
@@ -32,6 +31,7 @@ export const query = graphql`
     ytPlaylist(id: { eq: "lwypPlaylist" }) {
       childrenYtVideo {
         id
+        videoId
         title
         description
       }

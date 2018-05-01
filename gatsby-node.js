@@ -9,11 +9,7 @@ const ypi = require('youtube-playlist-info')
 const YT_KEY = require('./client_secrets.json')['yt_key']
 const LWyP = 'PLF8WgaD4xmjWuh7FTYTealxehOuNor_2S'
 
-exports.sourceNodes = async ({
-  boundActionCreators,
-  getNode,
-  hasNodeChanged,
-}) => {
+exports.sourceNodes = async ({ boundActionCreators }) => {
   const { createNode } = boundActionCreators
   const makeNode = node => {
     node.internal.contentDigest = crypto
@@ -58,11 +54,13 @@ exports.sourceNodes = async ({
       const id = `ytVideo-${resourceId.videoId}`
       makeNode({
         id,
+
         title,
         description,
         thumbnails,
         position,
         resourceId,
+        videoId: resourceId.videoId,
         internal: {
           type: 'ytVideo',
         },
