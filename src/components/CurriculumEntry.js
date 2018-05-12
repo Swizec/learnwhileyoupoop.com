@@ -7,6 +7,10 @@ const ClickableH3 = styled.h3`
   cursor: pointer;
 `
 
+const Description = styled.p`
+  width: 440px;
+`
+
 class CurriculumEntry extends React.Component {
   state = {
     expanded: false,
@@ -24,11 +28,11 @@ class CurriculumEntry extends React.Component {
     return (
       <div>
         <ClickableH3 onClick={this.onClick}>
-          {video.title.split('|')[0]}
+          {expanded ? '👇' : '👉'} {video.title.split('|')[0]}
         </ClickableH3>
         <AnimakitExpander expanded={expanded}>
-          <YouTube videoId={video.videoId} />
-          <p>{video.description}</p>
+          <YouTube videoId={video.videoId} opts={{ width: 640, hieght: 390 }} />
+          <Description>{video.description}</Description>
         </AnimakitExpander>
       </div>
     )

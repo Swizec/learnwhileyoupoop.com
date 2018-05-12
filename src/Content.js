@@ -16,7 +16,7 @@ import Section, {
   LowSection,
   SectionTitle,
 } from './components/Section'
-import { MiddleColumn } from './components/Columns'
+import { MiddleColumn, FullColumn } from './components/Columns'
 import Testimonial from './components/Testimonials'
 import CurriculumEntry from './components/CurriculumEntry'
 
@@ -26,11 +26,15 @@ export const Header = () => (
   <header className="text-left container">
     <Row>
       <Column md={11} mdOffset={1}>
-        <h1>Learn React While You Poop</h1>
+        <h1>Do you buy more books than you read?</h1>
         <p className="lead">
-          No pressure learning at 2 minutes per day. Start with the basics,
-          become a React 16.3 master in 30 days or sooner
+          <strong style={{ fontStyle: 'normal' }}>
+            Learn While You Poop! 💩
+          </strong>
+          <br />👉 No pressure learning at 2 minutes per day. Start with the
+          basics, become a React 16.3 master in 30 days or sooner
         </p>
+        <p>[testimonial]</p>
       </Column>
     </Row>
   </header>
@@ -47,25 +51,34 @@ export const Intro = () => (
 
 export const Curriculum = ({ videos }) => (
   <LowSection>
-    <SectionTitle>Curriculum Roadmap</SectionTitle>
+    <SectionTitle>Module 1: React Essentials</SectionTitle>
     <Row>
-      <MiddleColumn>
+      <FullColumn mdOffset={2}>
         {videos.map(video => <CurriculumEntry video={video} key={video.id} />)}
-      </MiddleColumn>
+      </FullColumn>
     </Row>
-    List current and future videos. Each is a link that expands with video.
-    Additional links for transcript and exercises show up. Find way to not have
-    to manually republish all the time.
+    <SectionTitle>Upcoming Modules</SectionTitle>
+    <Row>
+      <FullColumn mdOffset={2}>
+        {[
+          'Manage state with Redux or MobX',
+          'React Testing and Debugging',
+          'GraphQL',
+          'Build a fullstack app',
+          'Think in algorithms',
+          'How to architect',
+          'React Native',
+          'Suggest a topic ...',
+        ].map(name => <h3>{name}</h3>)}
+      </FullColumn>
+    </Row>
   </LowSection>
 )
 
 export const Footer = () => (
-  <LowSection>
+  <FluffySection>
     <MiddleColumn>
-      <p>
-        Know someone who wants to learn React and the associated ecosystem?
-        Share 👇
-      </p>
+      <p>Know someone who wants to learn React and its ecosystem? Share 👇</p>
       <div
         style={{
           display: 'flex',
@@ -75,14 +88,14 @@ export const Footer = () => (
       >
         <TwitterShareButton
           via="swizec"
-          title="Sweet! @swizec is giving away everything he knows about React, ES6+, D3 and others for just $30"
-          url="https://swizec.com/30"
+          title="Do you buy more books than you read? Learn while you poop! Learn React and its ecosystem in 2 minutes per day /@swizec"
+          url="https://learnwhileyoupoop.com"
         >
           <TwitterIcon size={32} round={true} />
         </TwitterShareButton>
         <FacebookShareButton
-          title="Sweet! @swizec is giving away everything he knows about React, ES6+, D3 and others for just $30"
-          url="https://swizec.com/30"
+          title="Do you buy more books than you read? Learn while you poop! Learn React and its ecosystem in 2 minutes per day /@swizec"
+          url="https://learnwhileyoupoop.com"
         >
           <FacebookIcon size={32} round={true} />
         </FacebookShareButton>
@@ -93,5 +106,5 @@ export const Footer = () => (
         <img src={Signature} style={{ width: '200px', margin: '1.5em 0' }} />
       </p>
     </MiddleColumn>
-  </LowSection>
+  </FluffySection>
 )
