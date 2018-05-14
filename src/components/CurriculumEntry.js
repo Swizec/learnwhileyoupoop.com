@@ -34,32 +34,37 @@ class CurriculumEntry extends React.Component {
         <ClickableH3 onClick={this.onClick}>
           {expanded ? '👇' : '👉'} {video.title.split('|')[0]}
         </ClickableH3>
-        <AnimakitExpander expanded={expanded}>
-          <YouTube videoId={video.videoId} opts={{ width: 640, height: 390 }} />
-          <Description>Description: {video.description}</Description>
+        {typeof window === 'undefined' ? null : (
+          <AnimakitExpander expanded={expanded}>
+            <YouTube
+              videoId={video.videoId}
+              opts={{ width: 640, height: 390 }}
+            />
+            <Description>Description: {video.description}</Description>
 
-          <Description>
-            <em>
-              This is where the companion article with additional exercises
-              shows up. Each around 1,000 words going in-depth into the topic
-              from the video.
-            </em>
-          </Description>
-          <CenteredDesc>
-            <a href="https://gum.co/UVcfs" className="gumroad-button">
-              Pre-order Module 1 for $29
-            </a>
-            <br />
-            <small>Companion articles/exercises coming May 2018</small>
-            <br />
-            <br />or <br />
-            <a href="https://gum.co/mDSp" className="gumroad-button">
-              Get everything for $19/month
-            </a>
-            <br />
-            <small>New content daily</small>
-          </CenteredDesc>
-        </AnimakitExpander>
+            <Description>
+              <em>
+                This is where the companion article with additional exercises
+                shows up. Each around 1,000 words going in-depth into the topic
+                from the video.
+              </em>
+            </Description>
+            <CenteredDesc>
+              <a href="https://gum.co/UVcfs" className="gumroad-button">
+                Pre-order Module 1 for $29
+              </a>
+              <br />
+              <small>Companion articles/exercises coming May 2018</small>
+              <br />
+              <br />or <br />
+              <a href="https://gum.co/mDSp" className="gumroad-button">
+                Get everything for $19/month
+              </a>
+              <br />
+              <small>New content daily</small>
+            </CenteredDesc>
+          </AnimakitExpander>
+        )}
       </div>
     )
   }
