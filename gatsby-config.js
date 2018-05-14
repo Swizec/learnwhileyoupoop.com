@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: 'Learn While You Poop',
-    description: 'No pressure learning at 2 minutes per day. Start with WHY React all the way to a React 16.3 master in a month.',
+    title: 'LEARN WHILE YOU POOP',
+    description: '👉 No pressure learning at 2 minutes per day. Start with the basics,become a React 16.3 master',
   },
   plugins: ['gatsby-plugin-react-helmet',
     {

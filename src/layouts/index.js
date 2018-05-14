@@ -7,6 +7,7 @@ import '../css/bootstrap-override.css'
 import '../css/bootstrap-custom-utils.css'
 import '../css/salesbury-lilac.css'
 import './index.css'
+import socialPic from '../img/social.png'
 
 const Layout = ({ children, data }) => (
   <div className="cheatsheet">
@@ -18,9 +19,9 @@ const Layout = ({ children, data }) => (
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-      <meta property="og:url" content="https://swizec.com/30" />
+      <meta property="og:url" content="https://learnwhileyoupoop.com" />
       <meta property="og:title" content={data.site.siteMetadata.title} />
-      <meta property="og:image" content="https://swizec.com/30/cover.jpg" />
+      <meta property="og:image" content={socialPic} />
       <meta
         property="og:description"
         content={data.site.siteMetadata.description}
@@ -34,7 +35,7 @@ const Layout = ({ children, data }) => (
         name="twitter:description"
         content={data.site.siteMetadata.description}
       />
-      <meta name="twitter:image" content="https://swizec.com/30/cover.jpg" />
+      <meta name="twitter:image" content={socialPic} />
 
       <title>{data.site.siteMetadata.title}</title>
     </Helmet>
