@@ -21,7 +21,10 @@ const Layout = ({ children, data }) => (
 
       <meta property="og:url" content="https://learnwhileyoupoop.com" />
       <meta property="og:title" content={data.site.siteMetadata.title} />
-      <meta property="og:image" content={socialPic} />
+      <meta
+        property="og:image"
+        content={`https://learnwhileyoupoop.com${socialPic}`}
+      />
       <meta
         property="og:description"
         content={data.site.siteMetadata.description}
@@ -35,7 +38,10 @@ const Layout = ({ children, data }) => (
         name="twitter:description"
         content={data.site.siteMetadata.description}
       />
-      <meta name="twitter:image" content={socialPic} />
+      <meta
+        name="twitter:image"
+        content={`https://learnwhileyoupoop.com${socialPic}`}
+      />
 
       <title>{data.site.siteMetadata.title}</title>
     </Helmet>
