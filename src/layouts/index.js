@@ -2,17 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 
-import ga from 'react-google-analytics'
-
 import 'bootstrap/dist/css/bootstrap.css'
 import '../css/bootstrap-override.css'
 import '../css/bootstrap-custom-utils.css'
 import '../css/salesbury-lilac.css'
 import './index.css'
-
-const GAInitiailizer = ga.Initializer
-// ga('create', 'UA-1464315-1', 'auto')
-ga('send', 'pageview')
 
 const Layout = ({ children, data }) => (
   <div className="cheatsheet">
@@ -43,8 +37,6 @@ const Layout = ({ children, data }) => (
       <meta name="twitter:image" content="https://swizec.com/30/cover.jpg" />
 
       <title>{data.site.siteMetadata.title}</title>
-
-      <GAInitiailizer />
     </Helmet>
     {children()}
   </div>
