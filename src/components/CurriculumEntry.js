@@ -42,11 +42,13 @@ class CurriculumEntry extends React.Component {
               videoId={video.videoId}
               opts={{ width: 640, height: 390 }}
             />
-            <Description>Description: {video.description}</Description>
 
             <Description>
               {article ? (
-                <div dangerouslySetInnerHTML={{ __html: article.html }} />
+                <React.Fragment>
+                  <p className="lead">{article.frontmatter.abstract}</p>
+                  <div dangerouslySetInnerHTML={{ __html: article.html }} />
+                </React.Fragment>
               ) : (
                 <p>
                   <em>
