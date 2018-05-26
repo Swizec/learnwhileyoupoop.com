@@ -29,8 +29,8 @@ export const Header = () => (
     <Row>
       <Column md={11} mdOffset={1}>
         <h1>
-          Imagine what you could build 🏗<br />if you had time to learn
-          everything 👩‍🎓
+          Imagine what you could build 🏗<br />if you had time to learn all of
+          React 👩‍🎓
         </h1>
         <p className="lead">
           <strong style={{ fontStyle: 'normal' }}>

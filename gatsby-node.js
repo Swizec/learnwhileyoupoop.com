@@ -85,7 +85,5 @@ exports.sourceNodes = async ({
   makeNode(playlistsNode)
   makeNode(ytNode)
 
-  // makeNode(lwypNode)
-
   return
 }
