@@ -30,7 +30,7 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'src',
-        path: `${__dirname}/src/`,
+        path: `${__dirname}/articles/`,
       },
     },
     {
@@ -60,7 +60,7 @@ module.exports = {
               dependencies: [],
               codesandbox: ['react', 'react-dom'],
               html: '<div id="root"></div>',
-              directory: `${__dirname}/examples/`,
+              directory: `${__dirname}/exercises/`,
               target: '_blank',
             },
           },

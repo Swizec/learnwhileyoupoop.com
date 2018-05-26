@@ -133,7 +133,7 @@ export const Intro = () => (
   </FluffySection>
 )
 
-export const Curriculum = ({ videos }) => (
+export const Curriculum = ({ videos, articles }) => (
   <LowSection>
     <Row>
       <SectionTitle>Module 1: React Essentials</SectionTitle>
@@ -164,7 +164,13 @@ export const Curriculum = ({ videos }) => (
     </Row>
     <Row>
       <FullColumn mdOffset={2}>
-        {videos.map(video => <CurriculumEntry video={video} key={video.id} />)}
+        {videos.map(video => (
+          <CurriculumEntry
+            video={video}
+            article={articles.get(video.videoId)}
+            key={video.id}
+          />
+        ))}
       </FullColumn>
     </Row>
     <SectionTitle>Upcoming Modules</SectionTitle>

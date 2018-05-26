@@ -7,7 +7,7 @@ const ClickableH3 = styled.h3`
   cursor: pointer;
 `
 
-const Description = styled.p`
+const Description = styled.div`
   width: 80%;
 `
 
@@ -26,8 +26,10 @@ class CurriculumEntry extends React.Component {
     })
 
   render() {
-    const { video } = this.props,
+    const { video, article } = this.props,
       { expanded } = this.state
+
+    console.log(video)
 
     return (
       <div>
@@ -43,11 +45,17 @@ class CurriculumEntry extends React.Component {
             <Description>Description: {video.description}</Description>
 
             <Description>
-              <em>
-                This is where the companion article with additional exercises
-                shows up. Each around 1,000 words going in-depth into the topic
-                from the video.
-              </em>
+              {article ? (
+                <div dangerouslySetInnerHTML={{ __html: article.html }} />
+              ) : (
+                <p>
+                  <em>
+                    This is where the companion article with additional
+                    exercises shows up. Each around 1,000 words going in-depth
+                    into the topic from the video.
+                  </em>
+                </p>
+              )}
             </Description>
             <CenteredDesc>
               <a href="https://gum.co/UVcfs" className="gumroad-button">
