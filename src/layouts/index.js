@@ -9,6 +9,8 @@ import '../css/salesbury-lilac.css'
 import './index.css'
 import socialPic from '../img/social.png'
 
+import 'prismjs/themes/prism-okaidia.css'
+
 const Layout = ({ children, data }) => (
   <div className="cheatsheet">
     <Helmet>

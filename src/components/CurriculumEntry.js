@@ -8,11 +8,15 @@ const ClickableH3 = styled.h3`
 `
 
 const Description = styled.div`
-  width: 80%;
+  width: 720px;
 `
 
 const CenteredDesc = Description.extend`
   text-align: center;
+
+  @media (max-width: 720px) {
+    width: 95%;
+  }
 `
 
 class CurriculumEntry extends React.Component {
