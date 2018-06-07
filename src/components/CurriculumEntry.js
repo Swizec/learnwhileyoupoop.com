@@ -33,8 +33,6 @@ class CurriculumEntry extends React.Component {
     const { video, article } = this.props,
       { expanded } = this.state
 
-    console.log(video)
-
     return (
       <div>
         <ClickableH3 onClick={this.onClick}>
