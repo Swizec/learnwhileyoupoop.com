@@ -1,19 +1,12 @@
 import React from 'react'
-import Link from 'gatsby-link'
-
-import { Col as Column } from 'react-bootstrap'
-import Section, {
-  LowSection,
-  DarkSection,
-  SectionTitle,
-  GreenSection,
-} from '../components/Section'
+import { graphql } from 'gatsby'
 
 import * as Content from '../Content'
+import Layout from '../components/layout'
 
 const IndexPage = ({ data }) => {
   return (
-    <div>
+    <Layout>
       <div className="bg-white-dark padding-small-top" />
       <Content.Header />
       <Content.Intro />
@@ -29,7 +22,7 @@ const IndexPage = ({ data }) => {
         }
       />
       <Content.Footer />
-    </div>
+    </Layout>
   )
 }
 
