@@ -12,68 +12,62 @@ import socialPic from '../img/social.png'
 
 import 'prismjs/themes/prism-okaidia.css'
 
-const query = graphql`
-  query LayoutQuery {
-    site {
-      siteMetadata {
-        title
-        description
-      }
-    }
-  }
-`
-
 const Layout = ({ children, data }) => (
-  <div>HELLO WORLD</div>
-  //   (
-  //     <div className="cheatsheet">
-  //       <Helmet>
-  //         <script async src="https://gumroad.com/js/gumroad.js" />
+  <div className="cheatsheet">
+    <Helmet>
+      <script async src="https://gumroad.com/js/gumroad.js" />
 
-  //         <meta name="author" content="Swizec Teller" />
-  //         <meta name="description" content={data.site.siteMetadata.description} />
-  //         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  //         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="author" content="Swizec Teller" />
+      <meta name="description" content={data.site.siteMetadata.description} />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  //         <meta property="og:url" content="https://learnwhileyoupoop.com" />
-  //         <meta property="og:title" content={data.site.siteMetadata.title} />
-  //         <meta
-  //           property="og:image"
-  //           content={`https://learnwhileyoupoop.com${socialPic}`}
-  //         />
-  //         <meta
-  //           property="og:description"
-  //           content={data.site.siteMetadata.description}
-  //         />
+      <meta property="og:url" content="https://learnwhileyoupoop.com" />
+      <meta property="og:title" content={data.site.siteMetadata.title} />
+      <meta
+        property="og:image"
+        content={`https://learnwhileyoupoop.com${socialPic}`}
+      />
+      <meta
+        property="og:description"
+        content={data.site.siteMetadata.description}
+      />
 
-  //         <meta name="twitter:card" content="summary_large_image" />
-  //         <meta name="twitter:site" content="@swizec" />
-  //         <meta name="twitter:creator" content="@swizec" />
-  //         <meta name="twitter:title" content={data.site.siteMetadata.title} />
-  //         <meta
-  //           name="twitter:description"
-  //           content={data.site.siteMetadata.description}
-  //         />
-  //         <meta
-  //           name="twitter:image"
-  //           content={`https://learnwhileyoupoop.com${socialPic}`}
-  //         />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@swizec" />
+      <meta name="twitter:creator" content="@swizec" />
+      <meta name="twitter:title" content={data.site.siteMetadata.title} />
+      <meta
+        name="twitter:description"
+        content={data.site.siteMetadata.description}
+      />
+      <meta
+        name="twitter:image"
+        content={`https://learnwhileyoupoop.com${socialPic}`}
+      />
 
-  //         <title>{data.site.siteMetadata.title}</title>
-  //       </Helmet>
-  //       {children}
-  //     </div>
-  //   )
+      <title>{data.site.siteMetadata.title}</title>
+    </Helmet>
+    {children}
+  </div>
 )
 
 Layout.propTypes = {
-  children: PropTypes.func,
+  children: PropTypes.node,
 }
 
-console.log(query)
-
 export default ({ children }) => (
-  <StaticQuery query={query} render={data => <div>HELLO</div>} />
+  <StaticQuery
+    query={graphql`
+      query LayoutQuery {
+        site {
+          siteMetadata {
+            title
+            description
+          }
+        }
+      }
+    `}
+    render={data => <Layout data={data}>{children}</Layout>}
+  />
 )
-
-/* <Layout data={data}>{children}</Layout> */
