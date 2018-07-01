@@ -1,6 +1,6 @@
 import React from 'react'
 import { Tweet } from 'react-twitter-widgets'
-import { Row, Col as Column, Image } from 'react-bootstrap'
+import { Row, Col as Column } from 'react-bootstrap'
 import styled from 'styled-components'
 // import InstagramEmbed from "react-instagram-embed";
 // import Countdown from "react-countdown-now";
@@ -11,14 +11,9 @@ import {
   FacebookIcon,
 } from 'react-share'
 
-import Section, {
-  GreenSection,
-  FluffySection,
-  LowSection,
-  SectionTitle,
-} from './components/Section'
-import { MiddleColumn, FullColumn, WideLeftColumn } from './components/Columns'
-import Testimonial from './components/Testimonials'
+import { FluffySection, LowSection, SectionTitle } from './components/Section'
+import { MiddleColumn, FullColumn } from './components/Columns'
+// import Testimonial from './components/Testimonials'
 import CurriculumEntry from './components/CurriculumEntry'
 
 import Signature from './img/signature.gif'

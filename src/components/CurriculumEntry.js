@@ -1,7 +1,7 @@
 import React from 'react'
 import AnimakitExpander from 'animakit-expander'
 import styled from 'styled-components'
-import YouTube from 'react-youtube'
+import ResponsivePlayer from './ResponsivePlayer'
 
 const ClickableH3 = styled.h3`
   cursor: pointer;
@@ -40,10 +40,7 @@ class CurriculumEntry extends React.Component {
         </ClickableH3>
         {typeof window === 'undefined' ? null : (
           <AnimakitExpander expanded={expanded}>
-            <YouTube
-              videoId={video.videoId}
-              opts={{ width: 640, height: 390 }}
-            />
+            <ResponsivePlayer videoId={video.videId} />
 
             <Description>
               {article ? (

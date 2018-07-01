@@ -9,12 +9,9 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-twitter',
     {
-      resolve: 'gatsby-plugin-facebook-analytics',
+      resolve: 'gatsby-plugin-facebook-pixel',
       options: {
-        includeInDevelopment: false,
-        appId: '714190382013726',
-        debug: false,
-        language: 'en_US',
+        pixelId: '714190382013726',
       },
     },
     {

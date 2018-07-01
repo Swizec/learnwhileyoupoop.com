@@ -7,7 +7,6 @@ import Layout from '../components/layout'
 const IndexPage = ({ data }) => {
   return (
     <Layout>
-      <div className="bg-white-dark padding-small-top" />
       <Content.Header />
       <Content.Intro />
       <Content.Curriculum
@@ -21,7 +20,6 @@ const IndexPage = ({ data }) => {
           )
         }
       />
-      <Content.Footer />
     </Layout>
   )
 }

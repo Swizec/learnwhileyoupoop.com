@@ -9,6 +9,9 @@ const ypi = require('youtube-playlist-info')
 const YT_KEY = require('./client_secrets.json')['yt_key']
 const LWyP = 'PLF8WgaD4xmjWuh7FTYTealxehOuNor_2S'
 
+const slugify = require('slugify')
+const path = require('path')
+
 exports.sourceNodes = async ({ actions }) => {
   const { createNode } = actions
   const makeNode = node => {
@@ -76,4 +79,51 @@ exports.sourceNodes = async ({ actions }) => {
   makeNode(ytNode)
 
   return
+}
+
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  if (node.internal.type === 'MarkdownRemark') {
+    const fileNode = getNode(node.parent)
+    const slug =
+      fileNode.relativeDirectory +
+      '/' +
+      slugify(node.frontmatter.title, { lower: true })
+
+    actions.createNodeField({
+      node,
+      name: 'slug',
+      value: slug,
+    })
+  }
+}
+
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions
+
+  return new Promise((resolve, reject) => {
+    graphql(`
+      {
+        allMarkdownRemark {
+          edges {
+            node {
+              fields {
+                slug
+              }
+            }
+          }
+        }
+      }
+    `).then(result => {
+      result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+        createPage({
+          path: node.fields.slug,
+          component: path.resolve('./src/templates/article.js'),
+          context: {
+            slug: node.fields.slug,
+          },
+        })
+      })
+      resolve()
+    })
+  })
 }
