@@ -114,15 +114,23 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     `).then(result => {
-      result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-        createPage({
-          path: node.fields.slug,
-          component: path.resolve('./src/templates/article.js'),
-          context: {
-            slug: node.fields.slug,
-          },
-        })
-      })
+      result.data.allMarkdownRemark.edges.forEach(
+        ({ node }, index, articles) => {
+          createPage({
+            path: node.fields.slug,
+            component: path.resolve('./src/templates/article.js'),
+            context: {
+              slug: node.fields.slug,
+              prevSlug:
+                index === 0 ? null : articles[index - 1].node.fields.slug,
+              nextSlug:
+                index === articles.length - 1
+                  ? null
+                  : articles[index + 1].node.fields.slug,
+            },
+          })
+        }
+      )
       resolve()
     })
   })
