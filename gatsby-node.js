@@ -122,11 +122,9 @@ exports.createPages = ({ graphql, actions }) => {
             context: {
               slug: node.fields.slug,
               prevSlug:
-                index === 0 ? null : articles[index - 1].node.fields.slug,
+                articles[index - 1] && articles[index - 1].node.fields.slug,
               nextSlug:
-                index === articles.length - 1
-                  ? null
-                  : articles[index + 1].node.fields.slug,
+                articles[index + 1] && articles[index + 1].node.fields.slug,
             },
           })
         }
