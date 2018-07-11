@@ -103,7 +103,7 @@ exports.createPages = ({ graphql, actions }) => {
   return new Promise((resolve, reject) => {
     graphql(`
       {
-        allMarkdownRemark {
+        allMarkdownRemark(sort: { fields: [fileAbsolutePath], order: ASC }) {
           edges {
             node {
               fields {
