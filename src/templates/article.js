@@ -10,7 +10,7 @@ import { Link } from 'gatsby'
 
 export default ({ data, pathContext }) => {
   const article = data.markdownRemark
-  const { prevSlug, nextSlug } = pathContext
+  const { prevSlug, nextSlug, prevTitle, nextTitle } = pathContext
 
   return (
     <Layout>
@@ -32,7 +32,7 @@ export default ({ data, pathContext }) => {
             componentClass={Link}
             to={'/' + prevSlug}
           >
-            &larr;&nbsp;Previous article
+            &larr;&nbsp;Previous lesson: {prevTitle}
           </Pager.Item>
         )}
         {nextSlug && (
@@ -41,7 +41,7 @@ export default ({ data, pathContext }) => {
             componentClass={Link}
             to={'/' + nextSlug}
           >
-            Next article&nbsp;&rarr;
+            Next lesson:&nbsp;{nextTitle}&nbsp;&rarr;
           </Pager.Item>
         )}
       </Pager>

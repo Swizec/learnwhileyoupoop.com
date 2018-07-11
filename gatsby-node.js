@@ -106,6 +106,9 @@ exports.createPages = ({ graphql, actions }) => {
         allMarkdownRemark(sort: { fields: [fileAbsolutePath], order: ASC }) {
           edges {
             node {
+              frontmatter {
+                title
+              }
               fields {
                 slug
               }
@@ -125,6 +128,12 @@ exports.createPages = ({ graphql, actions }) => {
                 articles[index - 1] && articles[index - 1].node.fields.slug,
               nextSlug:
                 articles[index + 1] && articles[index + 1].node.fields.slug,
+              prevTitle:
+                articles[index - 1] &&
+                articles[index - 1].node.frontmatter.title,
+              nextTitle:
+                articles[index + 1] &&
+                articles[index + 1].node.frontmatter.title,
             },
           })
         }
