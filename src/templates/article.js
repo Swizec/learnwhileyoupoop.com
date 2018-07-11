@@ -26,20 +26,24 @@ export default ({ data, pathContext }) => {
       </LowSection>
       <Pager>
         <p>👓&nbsp;Keep on learnin'&nbsp;👓</p>
-        <Pager.Item
-          href={'/' + prevSlug}
-          componentClass={Link}
-          to={'/' + prevSlug}
-        >
-          &larr;&nbsp;Previous article
-        </Pager.Item>
-        <Pager.Item
-          href={'/' + nextSlug}
-          componentClass={Link}
-          to={'/' + nextSlug}
-        >
-          Next article&nbsp;&rarr;
-        </Pager.Item>
+        {prevSlug && (
+          <Pager.Item
+            href={'/' + prevSlug}
+            componentClass={Link}
+            to={'/' + prevSlug}
+          >
+            &larr;&nbsp;Previous article
+          </Pager.Item>
+        )}
+        {nextSlug && (
+          <Pager.Item
+            href={'/' + nextSlug}
+            componentClass={Link}
+            to={'/' + nextSlug}
+          >
+            Next article&nbsp;&rarr;
+          </Pager.Item>
+        )}
       </Pager>
     </Layout>
   )
