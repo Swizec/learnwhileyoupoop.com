@@ -52,7 +52,6 @@ const Layout = ({ children, data }) => (
     <div className="bg-white-dark padding-small-top" />
 
     {children}
-    <Content.Footer />
   </div>
 )
 
