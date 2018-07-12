@@ -14,7 +14,6 @@
         "gatsby-plugin-sharp": "next",
         "gatsby-plugin-styled-components": "next",
         "gatsby-plugin-twitter": "next",
-        "gatsby-remark-code-repls": "next",
         "gatsby-remark-copy-linked-files": "next",
         "gatsby-remark-images": "next",
         "gatsby-remark-prismjs": "next",
