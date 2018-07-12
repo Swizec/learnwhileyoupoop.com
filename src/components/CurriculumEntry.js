@@ -40,7 +40,7 @@ class CurriculumEntry extends React.Component {
         </ClickableH3>
         {typeof window === 'undefined' ? null : (
           <AnimakitExpander expanded={expanded}>
-            <ResponsivePlayer videoId={video.videId} />
+            <ResponsivePlayer videoId={video.videoId} />
 
             <Description>
               {article ? (

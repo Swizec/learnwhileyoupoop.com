@@ -5,7 +5,6 @@ module.exports = {
       '👉 No pressure learning at 2 minutes per day. Start with the basics,become a React 16.3 master',
   },
   plugins: [
-    'gatsby-plugin-react-next',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-twitter',
     {

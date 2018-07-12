@@ -3,11 +3,14 @@ import React from 'react'
 import Layout from '../components/layout'
 import ResponsivePlayer from '../components/ResponsivePlayer'
 
-import { LowSection, SectionTitle } from '../components/Section'
-import { Row, Col as Column } from 'react-bootstrap'
+import { LowSection } from '../components/Section'
+import { Pager, Row, Col as Column } from 'react-bootstrap'
 
-export default ({ data }) => {
+import { Link } from 'gatsby'
+
+export default ({ data, pathContext }) => {
   const article = data.markdownRemark
+  const { prevSlug, nextSlug, prevTitle, nextTitle } = pathContext
 
   return (
     <Layout>
@@ -21,6 +24,27 @@ export default ({ data }) => {
           </Column>
         </Row>
       </LowSection>
+      <Pager>
+        <p>👓&nbsp;Keep on learnin'&nbsp;👓</p>
+        {prevSlug && (
+          <Pager.Item
+            href={'/' + prevSlug}
+            componentClass={Link}
+            to={'/' + prevSlug}
+          >
+            &larr;&nbsp;Previous lesson: {prevTitle}
+          </Pager.Item>
+        )}
+        {nextSlug && (
+          <Pager.Item
+            href={'/' + nextSlug}
+            componentClass={Link}
+            to={'/' + nextSlug}
+          >
+            Next lesson:&nbsp;{nextTitle}&nbsp;&rarr;
+          </Pager.Item>
+        )}
+      </Pager>
     </Layout>
   )
 }

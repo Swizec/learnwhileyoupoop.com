@@ -103,9 +103,12 @@ exports.createPages = ({ graphql, actions }) => {
   return new Promise((resolve, reject) => {
     graphql(`
       {
-        allMarkdownRemark {
+        allMarkdownRemark(sort: { fields: [fileAbsolutePath], order: ASC }) {
           edges {
             node {
+              frontmatter {
+                title
+              }
               fields {
                 slug
               }
@@ -114,15 +117,27 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     `).then(result => {
-      result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-        createPage({
-          path: node.fields.slug,
-          component: path.resolve('./src/templates/article.js'),
-          context: {
-            slug: node.fields.slug,
-          },
-        })
-      })
+      result.data.allMarkdownRemark.edges.forEach(
+        ({ node }, index, articles) => {
+          createPage({
+            path: node.fields.slug,
+            component: path.resolve('./src/templates/article.js'),
+            context: {
+              slug: node.fields.slug,
+              prevSlug:
+                articles[index - 1] && articles[index - 1].node.fields.slug,
+              nextSlug:
+                articles[index + 1] && articles[index + 1].node.fields.slug,
+              prevTitle:
+                articles[index - 1] &&
+                articles[index - 1].node.frontmatter.title,
+              nextTitle:
+                articles[index + 1] &&
+                articles[index + 1].node.frontmatter.title,
+            },
+          })
+        }
+      )
       resolve()
     })
   })
