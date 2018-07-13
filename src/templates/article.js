@@ -4,16 +4,15 @@ import Layout from '../components/layout'
 import ResponsivePlayer from '../components/ResponsivePlayer'
 
 import { LowSection } from '../components/Section'
-import { Pager, Row, Col as Column } from 'react-bootstrap'
-
-import { Link } from 'gatsby'
+import Pagination from '../components/Pagination'
+import { Row, Col as Column } from 'react-bootstrap'
 
 export default ({ data, pathContext }) => {
   const article = data.markdownRemark
-  const { prevSlug, nextSlug, prevTitle, nextTitle } = pathContext
 
   return (
     <Layout>
+      <Pagination pathContext={pathContext} small />
       <LowSection>
         <Row>
           <ResponsivePlayer videoId={article.frontmatter.videoId} />
@@ -24,27 +23,7 @@ export default ({ data, pathContext }) => {
           </Column>
         </Row>
       </LowSection>
-      <Pager>
-        <p>👓&nbsp;Keep on learnin'&nbsp;👓</p>
-        {prevSlug && (
-          <Pager.Item
-            href={'/' + prevSlug}
-            componentClass={Link}
-            to={'/' + prevSlug}
-          >
-            &larr;&nbsp;Previous lesson: {prevTitle}
-          </Pager.Item>
-        )}
-        {nextSlug && (
-          <Pager.Item
-            href={'/' + nextSlug}
-            componentClass={Link}
-            to={'/' + nextSlug}
-          >
-            Next lesson:&nbsp;{nextTitle}&nbsp;&rarr;
-          </Pager.Item>
-        )}
-      </Pager>
+      <Pagination pathContext={pathContext} />
     </Layout>
   )
 }
