@@ -63,13 +63,11 @@ class ShareDialog extends React.Component {
             <TwitterShareButton
               via="swizec"
               title={this.state.sharePlaceholder}
-              url={`https://learnwhileyoupoop.com/${this.props.slug}`}
+              url={this.props.url}
             >
               <TwitterIcon size={32} round={true} />
             </TwitterShareButton>
-            <FacebookShareButton
-              url={`https://learnwhileyoupoop.com/${this.props.slug}`}
-            >
+            <FacebookShareButton url={this.props.url}>
               <FacebookIcon size={32} round={true} />
             </FacebookShareButton>
           </CenteredDiv>
@@ -91,6 +89,7 @@ export default ({ data, pathContext }) => {
   const article = data.markdownRemark
   const title = article.frontmatter.title
   const { slug } = pathContext
+  const url = `https://learnwhileyoupoop.com/${slug}`
 
   const sharePlaceholder = `Here's a great lesson I just learned from @swizec: '${title}' · It's a ⏱ 2min 🎥 + an in-depth article 🔥 · Best company for the 🚽😅`
   return (
@@ -107,7 +106,7 @@ export default ({ data, pathContext }) => {
         </Row>
       </LowSection>
       <Pagination pathContext={pathContext} />
-      <ShareDialog sharePlaceholder={sharePlaceholder} slug={slug} />
+      <ShareDialog sharePlaceholder={sharePlaceholder} url={url} />
     </Layout>
   )
 }
