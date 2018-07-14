@@ -28,7 +28,7 @@ export default IndexPage
 
 export const query = graphql`
   query articlesAndLwypPlaylist {
-    ytPlaylist(id: { eq: "lwypPlaylist" }) {
+    ytPlaylist(playlistKey: { eq: "react" }) {
       childrenYtVideo {
         id
         videoId

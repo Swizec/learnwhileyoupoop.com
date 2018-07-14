@@ -7,12 +7,15 @@
 const crypto = require('crypto')
 const ypi = require('youtube-playlist-info')
 const YT_KEY = require('./client_secrets.json')['yt_key']
-const LWyP = 'PLF8WgaD4xmjWuh7FTYTealxehOuNor_2S'
+const playlistIds = {
+  react: 'PLF8WgaD4xmjWuh7FTYTealxehOuNor_2S',
+  state: 'PLF8WgaD4xmjUwRQMfDtGjJ1_UhOVMTjR9',
+}
 
 const slugify = require('slugify')
 const path = require('path')
 
-exports.sourceNodes = async ({ actions }) => {
+exports.sourceNodes = ({ actions }) => {
   const { createNode } = actions
   const makeNode = node => {
     node.internal.contentDigest = crypto
@@ -22,8 +25,6 @@ exports.sourceNodes = async ({ actions }) => {
 
     createNode(node)
   }
-
-  const items = await ypi(YT_KEY, LWyP)
 
   let ytNode = {
     id: 'youtube',
@@ -37,48 +38,58 @@ exports.sourceNodes = async ({ actions }) => {
   let playlistsNode = {
     id: 'ytPlaylists',
     parent: 'youtube',
-    children: ['lwypPlaylist'],
+    children: [],
     internal: {
       type: 'ytPlaylists',
     },
   }
 
-  let lwypNode = {
-    id: 'lwypPlaylist',
+  const basePlaylistNode = ([playlistKey, playlistId]) => ({
+    id: `ytPlaylist-${playlistId}`,
+    playlistKey: playlistKey,
+    playlistId: playlistId,
     parent: 'ytPlaylists',
     children: [],
     internal: {
       type: 'ytPlaylist',
     },
-  }
+  })
 
-  lwypNode.children = items.map(
-    ({ title, description, resourceId, thumbnails, position }) => {
-      const id = `ytVideo-${resourceId.videoId}`
-      makeNode({
-        id,
+  return Promise.all(
+    Object.entries(playlistIds).map(async ([playlistKey, playlistId]) => {
+      const items = await ypi(YT_KEY, playlistId)
+      const playlistNode = basePlaylistNode([playlistKey, playlistId])
 
-        title,
-        description,
-        thumbnails,
-        position,
-        resourceId,
-        videoId: resourceId.videoId,
-        internal: {
-          type: 'ytVideo',
-        },
-        parent: 'lwypPlaylist',
-        children: [],
-      })
-      return id
-    }
-  )
+      playlistNode.children = items.map(
+        ({ title, description, resourceId, thumbnails, position }) => {
+          const id = `ytVideo-${resourceId.videoId}`
+          makeNode({
+            id,
 
-  makeNode(lwypNode)
-  makeNode(playlistsNode)
-  makeNode(ytNode)
+            title,
+            description,
+            thumbnails,
+            position,
+            resourceId,
+            videoId: resourceId.videoId,
+            internal: {
+              type: 'ytVideo',
+            },
+            parent: playlistNode.id,
+            children: [],
+          })
+          return id
+        }
+      )
 
-  return
+      makeNode(playlistNode)
+      return playlistNode.id
+    })
+  ).then(playlistNodeIds => {
+    playlistsNode.children = playlistNodeIds
+    makeNode(playlistsNode)
+    makeNode(ytNode)
+  })
 }
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
