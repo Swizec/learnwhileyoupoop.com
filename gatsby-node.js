@@ -119,6 +119,7 @@ exports.createPages = ({ graphql, actions }) => {
             node {
               frontmatter {
                 title
+                videoId
               }
               fields {
                 slug
@@ -135,6 +136,7 @@ exports.createPages = ({ graphql, actions }) => {
             component: path.resolve('./src/templates/article.js'),
             context: {
               slug: node.fields.slug,
+              videoId: node.frontmatter.videoId,
               prevSlug:
                 articles[index - 1] && articles[index - 1].node.fields.slug,
               nextSlug:

@@ -2,6 +2,7 @@ import React from 'react'
 
 import Layout from '../components/layout'
 import ResponsivePlayer from '../components/ResponsivePlayer'
+import SocialHelmet from '../components/SocialHelmet.js'
 
 import Pagination from '../components/Pagination'
 import { FluffySection, LowSection } from '../components/Section'
@@ -91,13 +92,21 @@ export default ({ data, pathContext }) => {
   const { slug } = pathContext
   const url = `https://learnwhileyoupoop.com/${slug}`
 
+  const yt = data.ytVideo
+
   const sharePlaceholder = `Here's a great lesson I just learned from @swizec: '${title}' · It's a ⏱ 2min 🎥 + an in-depth article 🔥 · Best company for the 🚽😅`
   return (
     <Layout>
+      <SocialHelmet
+        url={url}
+        title={yt.title}
+        description={yt.description}
+        imageSrc={yt.thumbnails.high.url}
+      />
       <Pagination pathContext={pathContext} small />
       <LowSection>
         <Row>
-          <ResponsivePlayer videoId={article.frontmatter.videoId} />
+          <ResponsivePlayer videoId={yt.videoId} />
         </Row>
         <Row>
           <Column md={11} mdOffset={1}>
@@ -112,13 +121,24 @@ export default ({ data, pathContext }) => {
 }
 
 export const query = graphql`
-  query ArticleQuery($slug: String!) {
+  query ArticleQuery($slug: String!, $videoId: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
-        videoId
         title
       }
+    }
+    ytVideo(videoId: { eq: $videoId }) {
+      title
+      videoId
+      thumbnails {
+        high {
+          url
+          width
+          height
+        }
+      }
+      description
     }
   }
 `
