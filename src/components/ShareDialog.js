@@ -47,7 +47,6 @@ export default class ShareDialog extends React.Component {
               style={{
                 textAlign: 'center',
                 width: '500px',
-                fontSize: '1.5rem',
               }}
               value={this.state.sharePlaceholder}
               onChange={this.handleChange}
