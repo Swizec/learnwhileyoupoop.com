@@ -15,6 +15,7 @@ import { FluffySection, LowSection, SectionTitle } from './components/Section'
 import { MiddleColumn, FullColumn } from './components/Columns'
 // import Testimonial from './components/Testimonials'
 import CurriculumEntry from './components/CurriculumEntry'
+import CurriculumLink from './components/CurriculumLink'
 
 import Signature from './img/signature.gif'
 import seriouslyGif from './img/seriously.gif'
@@ -128,39 +129,41 @@ export const Intro = () => (
   </FluffySection>
 )
 
-export const Curriculum = ({ videos, articles }) => (
+export const Curriculum = ({ videos, articles, small }) => (
   <LowSection>
-    <Row>
-      <SectionTitle>Module 1: React Essentials</SectionTitle>
-      <FullColumn mdOffset={1} md={8}>
-        <p className="lead">
-          Start with <i>why</i> you should learn React 🧐 then go from building
-          your first React component all the way to the advanced stuff.
-        </p>
-        <p className="lead">
-          Render props, context, HOC, routing, the whole shebang. If that's
-          confusing, worry not, you'll learn all about it 😊
-        </p>
-        <p>
-          Want just the advanced stuff? Start there! This is <i>your</i> course.
-          You do you. 🚀
-        </p>
-        <p style={{ textAlign: 'center' }}>
-          <a href="https://gum.co/UVcfs" className="gumroad-button">
-            Pre-order Module 1 for $29
-          </a>
-          <br />
-          <small>Companion articles/exercises coming May 2018</small>
-        </p>
-        <p>
-          <small>PS: Click on a title to open that video 🎥</small>
-        </p>
-      </FullColumn>
-    </Row>
+    {!small ? (
+      <Row>
+        <FullColumn mdOffset={1} md={8}>
+          <p className="lead">
+            Start with <i>why</i> you should learn React 🧐 then go from
+            building your first React component all the way to the advanced
+            stuff.
+          </p>
+          <p className="lead">
+            Render props, context, HOC, routing, the whole shebang. If that's
+            confusing, worry not, you'll learn all about it 😊
+          </p>
+          <p>
+            Want just the advanced stuff? Start there! This is <i>your</i>{' '}
+            course. You do you. 🚀
+          </p>
+          <p style={{ textAlign: 'center' }}>
+            <a href="https://gum.co/UVcfs" className="gumroad-button">
+              Pre-order Module 1 for $29
+            </a>
+            <br />
+            <small>Companion articles/exercises coming May 2018</small>
+          </p>
+          <p>
+            <small>PS: Click on a title to open that video 🎥</small>
+          </p>
+        </FullColumn>
+      </Row>
+    ) : null}
     <Row>
       <FullColumn mdOffset={2}>
         {videos.map(video => (
-          <CurriculumEntry
+          <CurriculumLink
             video={video}
             article={articles.get(video.videoId)}
             key={video.id}
@@ -168,21 +171,25 @@ export const Curriculum = ({ videos, articles }) => (
         ))}
       </FullColumn>
     </Row>
-    <SectionTitle>Upcoming Modules</SectionTitle>
-    <Row>
-      <FullColumn mdOffset={2}>
-        {[
-          'Manage state with Redux or MobX',
-          'React Testing and Debugging',
-          'GraphQL',
-          'Build a fullstack app',
-          'Think in algorithms',
-          'How to architect',
-          'React Native',
-          'Suggest a topic ...',
-        ].map(name => <h3>{name}</h3>)}
-      </FullColumn>
-    </Row>
+    {!small ? (
+      <>
+        <SectionTitle>Upcoming Modules</SectionTitle>
+        <Row>
+          <FullColumn mdOffset={2}>
+            {[
+              'Manage state with Redux or MobX',
+              'React Testing and Debugging',
+              'GraphQL',
+              'Build a fullstack app',
+              'Think in algorithms',
+              'How to architect',
+              'React Native',
+              'Suggest a topic ...',
+            ].map(name => <h3>{name}</h3>)}
+          </FullColumn>
+        </Row>
+      </>
+    ) : null}
   </LowSection>
 )
 

@@ -1,16 +1,16 @@
 import React from 'react'
-import { graphql } from 'gatsby'
-import { SectionTitle } from '../components/Section'
+import { StaticQuery, graphql } from 'gatsby'
 
 import * as Content from '../Content'
 import Layout from '../components/layout'
+import { SectionTitle } from '../components/Section'
 
-const IndexPage = ({ data }) => {
+const StatePage = ({ data }) => {
   return (
     <Layout>
       <Content.Header />
-      <Content.Intro />
-      <SectionTitle>Module 1: React Essentials</SectionTitle>
+      {/* <Content.Intro /> */}
+      <SectionTitle>Module 2: React State Management</SectionTitle>
       <Content.Curriculum
         videos={data.ytPlaylist.childrenYtVideo}
         articles={
@@ -21,16 +21,17 @@ const IndexPage = ({ data }) => {
             ])
           )
         }
+        small
       />
     </Layout>
   )
 }
 
-export default IndexPage
+export default StatePage
 
 export const query = graphql`
-  query articlesAndLwypPlaylist {
-    ytPlaylist(playlistKey: { eq: "react" }) {
+  query stateVideosAndLessons {
+    ytPlaylist(playlistKey: { eq: "state" }) {
       childrenYtVideo {
         id
         videoId
@@ -45,6 +46,9 @@ export const query = graphql`
           html
           frontmatter {
             videoId
+          }
+          fields {
+            slug
           }
         }
       }
