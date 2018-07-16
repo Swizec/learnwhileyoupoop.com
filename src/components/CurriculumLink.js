@@ -26,7 +26,11 @@ class CurriculumLink extends React.Component {
       <div>
         <ClickableH3 onClick={this.onClick}>
           {'👉'}{' '}
-          <Link to={article.fields.slug}>{video.title.split('|')[0]}</Link>
+          {article && article.fields && article.fields.slug ? (
+            <Link to={article.fields.slug}>{video.title.split('|')[0]}</Link>
+          ) : (
+            video.title.split('|')[0]
+          )}
         </ClickableH3>
       </div>
     )
