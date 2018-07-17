@@ -15,6 +15,10 @@ const playlistIds = {
 const slugify = require('slugify')
 const path = require('path')
 
+if (process.env.NODE_ENV === 'development') {
+  process.env.GATSBY_WEBPACK_PUBLICPATH = '/'
+}
+
 exports.sourceNodes = ({ actions }) => {
   const { createNode } = actions
   const makeNode = node => {
