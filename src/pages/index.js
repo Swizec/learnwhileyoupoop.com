@@ -22,6 +22,7 @@ const IndexPage = ({ data }) => {
           )
         }
       />
+      <Content.Footer />
     </Layout>
   )
 }

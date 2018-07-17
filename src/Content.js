@@ -213,10 +213,7 @@ export const Footer = () => (
         >
           <TwitterIcon size={32} round={true} />
         </TwitterShareButton>
-        <FacebookShareButton
-          title="Do you buy more books than you read? Learn while you poop! Learn React and its ecosystem in 2 minutes per day /@swizec"
-          url="https://learnwhileyoupoop.com"
-        >
+        <FacebookShareButton url="https://learnwhileyoupoop.com">
           <FacebookIcon size={32} round={true} />
         </FacebookShareButton>
       </div>
