@@ -44,6 +44,9 @@
         "debug-build": "node --inspect-brk ./node_modules/gatsby/dist/bin/gatsby.js build",
         "develop": "gatsby develop",
         "debug-develop": "node --inspect-brk ./node_modules/gatsby/dist/bin/gatsby.js develop",
+        "serve": "yarn build && gatsby serve",
+        "reboot": "git stash && git clean -xdf -e client_secrets.json && git stash apply && yarn && yarn serve",
+        "rebuild": "rm -rf .cache/ public/ && yarn serve",
         "format": "prettier --write 'src/**/*.js'",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
