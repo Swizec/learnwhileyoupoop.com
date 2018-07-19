@@ -47,6 +47,9 @@ export const query = graphql`
           frontmatter {
             videoId
           }
+          fields {
+            slug
+          }
         }
       }
     }
