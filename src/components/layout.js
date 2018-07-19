@@ -3,7 +3,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 
-import 'bootstrap/dist/css/bootstrap.css'
+import '../css/css/bootstrap.css'
 import '../css/bootstrap-override.css'
 import '../css/bootstrap-custom-utils.css'
 import '../css/salesbury-lilac.css'

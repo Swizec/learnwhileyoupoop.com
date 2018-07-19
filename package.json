@@ -6,7 +6,6 @@
     "dependencies": {
         "animakit-expander": "^2.1.4",
         "babel-plugin-styled-components": "^1.5.1",
-        "bootstrap": "3",
         "gatsby": "next",
         "gatsby-plugin-facebook-pixel": "^1.0.3",
         "gatsby-plugin-google-analytics": "next",
