@@ -9,12 +9,12 @@ import '../css/bootstrap-custom-utils.css'
 import '../css/salesbury-lilac.css'
 
 import socialPic from '../img/social.png'
+import { Container } from '../components/Grid'
 
 import 'prismjs/themes/prism-okaidia.css'
-import * as Content from '../Content'
 
 const Layout = ({ children, data }) => (
-  <div className="cheatsheet">
+  <React.Fragment>
     <Helmet>
       <script async src="https://gumroad.com/js/gumroad.js" />
 
@@ -50,9 +50,8 @@ const Layout = ({ children, data }) => (
       <title>{data.site.siteMetadata.title}</title>
     </Helmet>
     <div className="bg-white-dark padding-small-top" />
-
-    {children}
-  </div>
+    <Container>{children}</Container>
+  </React.Fragment>
 )
 
 Layout.propTypes = {

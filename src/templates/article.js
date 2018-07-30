@@ -5,9 +5,8 @@ import ResponsivePlayer from '../components/ResponsivePlayer'
 import SocialHelmet from '../components/SocialHelmet.js'
 import ShareDialog from '../components/ShareDialog.js'
 
-import { LowSection } from '../components/Section'
 import Pagination from '../components/Pagination'
-import { Row, Col as Column } from 'react-bootstrap'
+import { Row, Column } from '../components/Grid'
 
 export default ({ data, pathContext }) => {
   const article = data.markdownRemark
@@ -27,16 +26,22 @@ export default ({ data, pathContext }) => {
         imageSrc={yt.thumbnails.high.url}
       />
       <Pagination pathContext={pathContext} small />
-      <LowSection>
-        <Row>
+
+      <Row>
+        <Column
+          md={12}
+          mdOffset={0}
+          style={{ marginLeft: -15, marginRight: -15 }}
+        >
           <ResponsivePlayer videoId={yt.videoId} />
-        </Row>
-        <Row>
-          <Column md={11} mdOffset={1}>
-            <div dangerouslySetInnerHTML={{ __html: article.html }} />
-          </Column>
-        </Row>
-      </LowSection>
+        </Column>
+      </Row>
+      <Row>
+        <Column md={11} mdOffset={1}>
+          <div dangerouslySetInnerHTML={{ __html: article.html }} />
+        </Column>
+      </Row>
+
       <Pagination pathContext={pathContext} />
       <ShareDialog sharePlaceholder={sharePlaceholder} url={url} />
     </Layout>
