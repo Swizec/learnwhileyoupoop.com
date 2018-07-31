@@ -38,7 +38,7 @@
     ],
     "license": "MIT",
     "scripts": {
-        "deploy": "rm-rf .cache/ public/ && gatsby build && cd public/ && now && cd ..",
+        "deploy": "rm -rf .cache/ public/ && gatsby build && cd public/ && now && cd ..",
         "build": "gatsby build",
         "debug-build": "node --inspect-brk ./node_modules/gatsby/dist/bin/gatsby.js build",
         "develop": "gatsby develop",
