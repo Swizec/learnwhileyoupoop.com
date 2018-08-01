@@ -1,0 +1,12 @@
+{
+  "env": {
+    "YT_KEY": "@lwyp-yt-key"
+  },
+  "type": "static",
+  "public": true,
+  "build": {
+    "env": {
+      "YT_KEY": "@lwyp-yt-key"
+    }
+  }
+}
