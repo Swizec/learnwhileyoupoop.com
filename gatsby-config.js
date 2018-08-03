@@ -49,6 +49,7 @@ module.exports = {
               showCaptions: true,
             },
           },
+          `gatsby-remark-a11y-emoji`,
         ],
       },
     },

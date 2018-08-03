@@ -3666,7 +3666,7 @@ elliptic@^6.0.0:
   version "6.1.1"
   resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-6.1.1.tgz#c6cd0ec1b0642e2a3c67a1137efc5e796da4f88e"
 
-emoji-regex@^6.1.0:
+emoji-regex@^6.1.0, emoji-regex@^6.5.1:
   version "6.5.1"
   resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-6.5.1.tgz#9baea929b155565c11ea41c6626eaa65cef992c2"
 
@@ -4741,6 +4741,13 @@ gatsby-react-router-scroll@^2.0.0-beta.2:
     scroll-behavior "^0.9.9"
     warning "^3.0.0"
 
+gatsby-remark-a11y-emoji@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-a11y-emoji/-/gatsby-remark-a11y-emoji-1.0.0.tgz#95e771fa6a98732d2bfe9cdae6160d65c0bcc64a"
+  dependencies:
+    emoji-regex "^6.5.1"
+    gemoji "^4.2.1"
+
 gatsby-remark-copy-linked-files@next:
   version "2.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/gatsby-remark-copy-linked-files/-/gatsby-remark-copy-linked-files-2.0.0-beta.2.tgz#233025bcbfec08d06f5d6e047e53893d7cbf7a0d"
@@ -4952,6 +4959,10 @@ gauge@~2.7.3:
     string-width "^1.0.1"
     strip-ansi "^3.0.1"
     wide-align "^1.1.0"
+
+gemoji@^4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/gemoji/-/gemoji-4.2.1.tgz#88495f479a2e35a2c693e0ed321933372fc74c68"
 
 generate-function@^2.0.0:
   version "2.0.0"
