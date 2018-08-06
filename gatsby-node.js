@@ -4,9 +4,10 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
+require('now-env')
 const crypto = require('crypto')
 const ypi = require('youtube-playlist-info')
-const YT_KEY = require('./client_secrets.json')['yt_key']
+const YT_KEY = process.env['YT_KEY']
 const playlistIds = {
   react: 'PLF8WgaD4xmjWuh7FTYTealxehOuNor_2S',
   state: 'PLF8WgaD4xmjUwRQMfDtGjJ1_UhOVMTjR9',
