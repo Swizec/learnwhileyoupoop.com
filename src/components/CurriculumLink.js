@@ -15,13 +15,16 @@ const TitleLink = styled(Link)`
 class CurriculumLink extends React.Component {
   render() {
     const { video, article } = this.props
+    const title = video.title.split('|')[0]
+
+    // Sometimes there's a video in the playlist but the article hasn't been
+    // written yet
+    const pagePath = article && article.fields && article.fields.pagePath
 
     return (
       <h3>
-        {'👉'}{' '}
-        <TitleLink to={article.fields.slug}>
-          {video.title.split('|')[0]}
-        </TitleLink>
+        {'👉'}
+        {pagePath ? <TitleLink to={pagePath}>{title}</TitleLink> : title}
       </h3>
     )
   }

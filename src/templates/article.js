@@ -12,8 +12,8 @@ import { Row, Col as Column } from 'react-bootstrap'
 export default ({ data, pathContext }) => {
   const article = data.markdownRemark
   const title = article.frontmatter.title
-  const { slug } = pathContext
-  const url = `https://learnwhileyoupoop.com/${slug}`
+  const { pagePath } = pathContext
+  const url = `https://learnwhileyoupoop.com${pagePath}`
 
   const yt = data.ytVideo
 
@@ -44,8 +44,8 @@ export default ({ data, pathContext }) => {
 }
 
 export const query = graphql`
-  query ArticleQuery($slug: String!, $videoId: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+  query ArticleQuery($pagePath: String!, $videoId: String!) {
+    markdownRemark(fields: { pagePath: { eq: $pagePath } }) {
       html
       frontmatter {
         title

@@ -4,25 +4,17 @@ import { Pager } from 'react-bootstrap'
 import { Link } from 'gatsby'
 
 const Pagination = ({ pathContext, small }) => {
-  const { prevSlug, nextSlug, prevTitle, nextTitle } = pathContext
+  const { prevPagePath, nextPagePath, prevTitle, nextTitle } = pathContext
   return (
     <Pager>
       {!small ? <p>👓&nbsp;Keep on learnin'&nbsp;👓</p> : null}
-      {prevSlug && (
-        <Pager.Item
-          href={'/' + prevSlug}
-          componentClass={Link}
-          to={'/' + prevSlug}
-        >
+      {prevPagePath && (
+        <Pager.Item href={prevPagePath} componentClass={Link} to={prevPagePath}>
           &larr;&nbsp;Previous lesson: {prevTitle}
         </Pager.Item>
       )}
-      {nextSlug && (
-        <Pager.Item
-          href={'/' + nextSlug}
-          componentClass={Link}
-          to={'/' + nextSlug}
-        >
+      {nextPagePath && (
+        <Pager.Item href={nextPagePath} componentClass={Link} to={nextPagePath}>
           Next lesson:&nbsp;{nextTitle}&nbsp;&rarr;
         </Pager.Item>
       )}

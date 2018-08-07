@@ -41,9 +41,9 @@
     "scripts": {
         "deploy": "rm -rf .cache/ public/ && gatsby build && cd public/ && now && cd ..",
         "build": "gatsby build",
-        "debug-build": "node --inspect-brk ./node_modules/gatsby/dist/bin/gatsby.js build",
+        "debug-build": "rm -rf .cache/ && ndb ./node_modules/gatsby/dist/bin/gatsby.js build",
         "develop": "gatsby develop",
-        "debug-develop": "node --inspect-brk ./node_modules/gatsby/dist/bin/gatsby.js develop",
+        "debug-develop": "ndb ./node_modules/gatsby/dist/bin/gatsby.js develop",
         "serve": "yarn build && gatsby serve",
         "reboot": "git stash && git clean -xdf -e now-secrets.json && git stash apply && yarn && yarn serve",
         "rebuild": "rm -rf .cache/ public/ && yarn serve",
@@ -51,6 +51,7 @@
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "devDependencies": {
+        "ndb": "^1.0.19",
         "prettier": "^1.12.0"
     }
 }
