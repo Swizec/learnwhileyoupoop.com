@@ -1,5 +1,5 @@
 import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 
 import * as Content from '../Content'
 import Layout from '../components/layout'
@@ -21,7 +21,6 @@ const StatePage = ({ data }) => {
             ])
           )
         }
-        small
       />
     </Layout>
   )

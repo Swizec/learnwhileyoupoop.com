@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { SectionTitle } from '../components/Section'
 
+import Section from '../components/Section'
 import * as Content from '../Content'
 import Layout from '../components/layout'
 
@@ -9,20 +9,33 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <Content.Header />
-      <Content.Intro />
-      <SectionTitle>Module 1: React Essentials</SectionTitle>
-      <Content.Curriculum
-        videos={data.ytPlaylist.childrenYtVideo}
-        articles={
-          new Map(
-            data.allMarkdownRemark.edges.map(({ node }) => [
-              node.frontmatter.videoId,
-              node,
-            ])
-          )
-        }
-      />
-      <Content.Footer />
+      <Section>
+        <Content.Intro />
+      </Section>
+
+      <Section>
+        <Content.Title />
+        <Content.Pitch />
+        <Content.Curriculum
+          videos={data.ytPlaylist.childrenYtVideo}
+          articles={
+            new Map(
+              data.allMarkdownRemark.edges.map(({ node }) => [
+                node.frontmatter.videoId,
+                node,
+              ])
+            )
+          }
+        />
+      </Section>
+
+      <Section>
+        <Content.Upcoming />
+      </Section>
+
+      <Section>
+        <Content.Footer />
+      </Section>
     </Layout>
   )
 }

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Tweet } from 'react-twitter-widgets'
-import { Row, Col as Column } from 'react-bootstrap'
 import styled from 'styled-components'
 // import InstagramEmbed from "react-instagram-embed";
 // import Countdown from "react-countdown-now";
@@ -11,17 +10,16 @@ import {
   FacebookIcon,
 } from 'react-share'
 
-import { FluffySection, LowSection, SectionTitle } from './components/Section'
-import { MiddleColumn, FullColumn } from './components/Columns'
+import { SectionTitle } from './components/Section'
 // import Testimonial from './components/Testimonials'
-import CurriculumEntry from './components/CurriculumEntry'
 import CurriculumLink from './components/CurriculumLink'
+import { Row, Column, MiddleColumn } from './components/Grid'
 
 import Signature from './img/signature.gif'
 import seriouslyGif from './img/seriously.gif'
 
 export const Header = () => (
-  <header className="text-left container">
+  <header className="text-left">
     <Row>
       <Column md={11} mdOffset={1}>
         <h1>
@@ -45,14 +43,14 @@ const NoBullet = styled.li`
 `
 
 export const Intro = () => (
-  <FluffySection>
+  <>
     <Row>
-      <MiddleColumn>
+      <MiddleColumn fullWidthOnMobile={true}>
         <Tweet tweetId="981932124231024640" />
       </MiddleColumn>
     </Row>
     <Row>
-      <FullColumn mdOffset={2} md={7}>
+      <Column mdOffset={2} md={7}>
         <br />
         <p className="lead">
           How frustrated do you get when you're{' '}
@@ -80,17 +78,20 @@ export const Intro = () => (
           <NoBullet>👊 you get stuck</NoBullet>
           <NoBullet>🎲 you search random blogs for a solution</NoBullet>
         </ul>
-      </FullColumn>
+      </Column>
     </Row>
     <Row>
-      <MiddleColumn>
+      <MiddleColumn fullWidthOnMobile={true}>
         <p>
-          <img src={seriouslyGif} />
+          <img
+            style={{ maxWidth: '100%', height: 'auto', width: 'auto' }}
+            src={seriouslyGif}
+          />
         </p>
       </MiddleColumn>
     </Row>
     <Row>
-      <FullColumn mdOffset={2} md={8}>
+      <Column mdOffset={2} md={8}>
         <h2>What if life never got in the way?</h2>
         <p className="lead">
           I can't promise life won't happen. Or that you won't get distracted
@@ -124,77 +125,80 @@ export const Intro = () => (
           <small>New content daily</small>
         </p>
         <p>You can check out videos from Module 1 to get a taste 👇</p>
-      </FullColumn>
+      </Column>
     </Row>
-  </FluffySection>
+  </>
 )
 
-export const Curriculum = ({ videos, articles, small }) => (
-  <LowSection>
-    {!small ? (
-      <Row>
-        <FullColumn mdOffset={1} md={8}>
-          <p className="lead">
-            Start with <i>why</i> you should learn React 🧐 then go from
-            building your first React component all the way to the advanced
-            stuff.
-          </p>
-          <p className="lead">
-            Render props, context, HOC, routing, the whole shebang. If that's
-            confusing, worry not, you'll learn all about it 😊
-          </p>
-          <p>
-            Want just the advanced stuff? Start there! This is <i>your</i>{' '}
-            course. You do you. 🚀
-          </p>
-          <p style={{ textAlign: 'center' }}>
-            <a href="https://gum.co/UVcfs" className="gumroad-button">
-              Pre-order Module 1 for $29
-            </a>
-            <br />
-            <small>Companion articles/exercises coming May 2018</small>
-          </p>
-          <p>
-            <small>PS: Click on a title to open that video 🎥</small>
-          </p>
-        </FullColumn>
-      </Row>
-    ) : null}
+export const Title = () => (
+  <SectionTitle>Module 1: React Essentials</SectionTitle>
+)
+
+export const Pitch = () => (
+  <Row>
+    <Column mdOffset={1} md={8}>
+      <p className="lead">
+        Start with <i>why</i> you should learn React 🧐 then go from building
+        your first React component all the way to the advanced stuff.
+      </p>
+      <p className="lead">
+        Render props, context, HOC, routing, the whole shebang. If that's
+        confusing, worry not, you'll learn all about it 😊
+      </p>
+      <p>
+        Want just the advanced stuff? Start there! This is <i>your</i> course.
+        You do you. 🚀
+      </p>
+      <p style={{ textAlign: 'center' }}>
+        <a href="https://gum.co/UVcfs" className="gumroad-button">
+          Pre-order Module 1 for $29
+        </a>
+        <br />
+        <small>Companion articles/exercises coming May 2018</small>
+      </p>
+      <p>
+        <small>PS: Click on a title to open that video 🎥</small>
+      </p>
+    </Column>
+  </Row>
+)
+
+export const Curriculum = ({ videos, articles }) => (
+  <Row>
+    <Column md={10} mdOffset={2}>
+      {videos.map(video => (
+        <CurriculumLink
+          video={video}
+          article={articles.get(video.videoId)}
+          key={video.id}
+        />
+      ))}
+    </Column>
+  </Row>
+)
+
+export const Upcoming = () => (
+  <>
+    <SectionTitle>Upcoming Modules</SectionTitle>
     <Row>
-      <FullColumn mdOffset={2}>
-        {videos.map(video => (
-          <CurriculumLink
-            video={video}
-            article={articles.get(video.videoId)}
-            key={video.id}
-          />
-        ))}
-      </FullColumn>
+      <Column mdOffset={2}>
+        {[
+          'Manage state with Redux or MobX',
+          'React Testing and Debugging',
+          'GraphQL',
+          'Build a fullstack app',
+          'Think in algorithms',
+          'How to architect',
+          'React Native',
+          'Suggest a topic ...',
+        ].map(name => <h3>{name}</h3>)}
+      </Column>
     </Row>
-    {!small ? (
-      <>
-        <SectionTitle>Upcoming Modules</SectionTitle>
-        <Row>
-          <FullColumn mdOffset={2}>
-            {[
-              'Manage state with Redux or MobX',
-              'React Testing and Debugging',
-              'GraphQL',
-              'Build a fullstack app',
-              'Think in algorithms',
-              'How to architect',
-              'React Native',
-              'Suggest a topic ...',
-            ].map(name => <h3>{name}</h3>)}
-          </FullColumn>
-        </Row>
-      </>
-    ) : null}
-  </LowSection>
+  </>
 )
 
 export const Footer = () => (
-  <FluffySection>
+  <Row>
     <MiddleColumn>
       <p>
         Know someone who wants to learn React and its whole ecosystem? Share 👇
@@ -223,5 +227,5 @@ export const Footer = () => (
         <img src={Signature} style={{ width: '200px', margin: '1.5em 0' }} />
       </p>
     </MiddleColumn>
-  </FluffySection>
+  </Row>
 )
