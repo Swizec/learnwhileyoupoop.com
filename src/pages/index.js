@@ -48,7 +48,7 @@ export const query = graphql`
             videoId
           }
           fields {
-            slug
+            pagePath
           }
         }
       }

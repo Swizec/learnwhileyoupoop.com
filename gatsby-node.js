@@ -107,8 +107,8 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
     actions.createNodeField({
       node,
-      name: 'slug',
-      value: slug,
+      name: 'pagePath',
+      value: '/' + slug,
     })
   }
 }
@@ -127,7 +127,7 @@ exports.createPages = ({ graphql, actions }) => {
                 videoId
               }
               fields {
-                slug
+                pagePath
               }
             }
           }
@@ -137,15 +137,15 @@ exports.createPages = ({ graphql, actions }) => {
       result.data.allMarkdownRemark.edges.forEach(
         ({ node }, index, articles) => {
           createPage({
-            path: node.fields.slug,
+            path: node.fields.pagePath,
             component: path.resolve('./src/templates/article.js'),
             context: {
-              slug: node.fields.slug,
+              pagePath: node.fields.pagePath,
               videoId: node.frontmatter.videoId,
-              prevSlug:
-                articles[index - 1] && articles[index - 1].node.fields.slug,
-              nextSlug:
-                articles[index + 1] && articles[index + 1].node.fields.slug,
+              prevPagePath:
+                articles[index - 1] && articles[index - 1].node.fields.pagePath,
+              nextPagePath:
+                articles[index + 1] && articles[index + 1].node.fields.pagePath,
               prevTitle:
                 articles[index - 1] &&
                 articles[index - 1].node.frontmatter.title,
