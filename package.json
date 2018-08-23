@@ -13,6 +13,7 @@
         "gatsby-plugin-sharp": "next",
         "gatsby-plugin-styled-components": "next",
         "gatsby-plugin-twitter": "next",
+        "gatsby-remark-a11y-emoji": "^1.0.0",
         "gatsby-remark-copy-linked-files": "next",
         "gatsby-remark-images": "next",
         "gatsby-remark-prismjs": "next",
